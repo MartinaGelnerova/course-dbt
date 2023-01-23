@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: stg_postgres__addresses
+    description: List of all used addresses
+    columns:
+    - name: ADDRESS_GUID
+      tests:
+      - not_null
+      - unique
+    - name: ADDRESS
+    - name: ZIPCODE
+    - name: STATE
+    - name: COUNTRY
+  
+  - name: stg_postgres__events
+    description: Events from web incl. product_id and order_id
+    columns:
+    - name: EVENT_GUID
+      tests:
+      - not_null
+      - unique
+    - name: SESSION_GUID
+    - name: USER_GUID
+    - name: PAGE_URL
+    - name: CREATED_AT_UTC
+    - name: EVENT_TYPE
+    - name: ORDER_GUID
+    - name: PRODUCT_GU
+  
+  - name: stg_postgres__orders
+    description: Info about orders
+    columns:
+    - name: ORDER_GUID
+      tests:
+      - not_null
+      - unique
+    - name: USER_GUID
+    - name: PROMO_DESC
+    - name: ADDRESS_GUID
+    - name: CREATED_AT_UTC
+    - name: ORDER_COST
+    - name: SHIPPING_COST
+    - name: ORDER_TOTAL
+    - name: TRACKING_GUID
+    - name: SHIPPING_SERVICE
+    - name: ESTIMATED_DELIVERY_AT_UTC
+    - name: DELIVERED_AT_UTC
+    - name: STATUS
+      tests:
+      - accepted_values:
+              values: ['shipped', 'delivered', 'preparing']
+  
+  - name: stg_postgres__order_items
+    description: List of items and its quantity per each order
+    columns:
+    - name: ORDER_GUID
+    - name: PRODUCT_GUID
+    - name: QUANTITY
+      tests:
+      - not_null
+
+  - name: stg_postgres__products
+    description: Info about product_id, name, price, inventory
+    columns:
+    - name: PRODUCT_GUID
+      tests:
+      - not_null
+      - unique
+    - name: NAME
+    - name: PRICE
+    - name: INVENTORY
+
+  - name: stg_postgres__promos
+    description: Info about promo_id, discount, status (active/inactive)
+    columns:
+    - name: PROMO_GUID
+      tests:
+      - not_null
+      - unique
+    - name: DISCOUNT
+    - name: STATUS
+
+  - name: stg_postgres__superheroes
+    description: Demographics about each superhero such as name, hair color, height and weight.
+    columns:
+    - name: SUPERHERO_GUID
+      tests:
+      - not_null
+      - unique
+    - name: NAME
+    - name: GENDER
+    - name: EYE_COLOR
+    - name: RACE
+    - name: HAIR_COLOR
+    - name: HEIGHT
+    - name: PUBLISHER
+    - name: SKIN_COLOR
+    - name: ALIGNMENT
+    - name: WEIGHT
+    - name: CREATED_AT_UTC
+    - name: UPDATED_AT_UTC
+    - name: WEIGHT_KG
+  
+  - name: stg_postgres__users
+    description: Users' contact info such as name, address_id, phone, email
+    columns:
+    - name: USER_GUID
+      tests:
+      - not_null
+      - unique
+    - name: FIRST_NAME
+    - name: LAST_NAME
+    - name: EMAIL
+    - name: PHONE_NUMBER
+    - name: CREATED_AT_UTC
+    - name: UPDATED_AT_UTC
+    - name: ADDRESS_GUID

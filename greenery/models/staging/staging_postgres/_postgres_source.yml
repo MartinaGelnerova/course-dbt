@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: postgres
+    database: raw
+    schema: public
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: addresses
+        description: Raw list of addresses for all users.
+
+      - name: events
+        description: Raw list of events from web.
+      
+      - name: order_items
+        description: Details on products and quantity per order.
+
+      - name: orders
+        description: List of all orders.
+
+      - name: products
+        description: List of all products.
+
+      - name: promos
+        description: List of all promos.
+
+      - name: superheroes
+        description: List of superheroes.
+
+      - name: users
+        description: List of all users.
