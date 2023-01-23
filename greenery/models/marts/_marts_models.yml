@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_user_sessions
+    description: Agg data about session incl. user details
+    columns:
+    - name: SESSION_GUID
+    - name: USER_GUID
+    - name: FIRST_NAME
+    - name: LAST_NAME
+    - name: EMAIL
+    - name: ADD_TO_CARTS
+    - name: CHECKOUTS
+    - name: PACKAGES_SHIPPED
+    - name: PAGE_VIEWS
+    - name: FIRST_SESSION_EVENT
+    - name: LAST_SESSION_EVENT
+    - name: SESSION_LENGTH_MINUTES

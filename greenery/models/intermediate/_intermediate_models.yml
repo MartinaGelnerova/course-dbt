@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_session_events_agg
+    description: Aggregates sesson data per unique session
+    columns:
+    - name: USER_GUID
+    - name: SESSION_GUID
+    - name: ADD_TO_CARTS
+    - name: CHECKOUTS
+    - name: PACKAGES_SHIPPED
+    - name: PAGE_VIEWS
+    - name: FIRST_SESSION_EVENT_AT_UTC
+    - name: LAST_SESSION_EVENT_AT_UTC
+
+  - name: int_user_contacts
+    description: User with full contact information incl. address
+    columns:
+    - name: user_guid
+      tests:
+      - not_null
+      - unique
+    - name: first_name
+    - name: last_name
+    - name: created_at_utc
+    - name: email
+    - name: phone_number
+    - name: address
+    - name: zipcode
+    - name: state
+    - name: country
+
+  - name: int_order_items_products
+    description: Order details per each order - product, quanity, price, revenue per product/order
+    columns:
+    - name: order_guid
+    - name: product_guid
+    - name: user_guid
+    - name: created_at_utc
+    - name: product_name
+    - name: quantity
+    - name: price
+    - name: order_revenue

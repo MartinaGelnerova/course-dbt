@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: fct_page_views
+    description: Daily page views and orders per each product, incl conversion rate and sold pieces
+    columns:
+    - name: product_guid
+    - name: date
+    - name: page_views
+      tests:
+      - not_null
+    - name: orders_count
+    - name: view_order_conversion
+    - name: pcs_sold
+    - name: avg_pcs_per_order
