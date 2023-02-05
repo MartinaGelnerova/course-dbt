@@ -1,0 +1,14 @@
+version: 2
+
+exposures:  
+  - name: Product Funnel Dashboard
+    description: Product funnel dashboard allows to analyze funnel based on product and/or user details
+    type: dashboard
+    url: https://app.sigmacomputing.com/corise-dbt/workbook/workbook-3GWJF5EovJbzVDvHVW773u?:draftId=5ecebd11-865a-4282-a57f-ba7cafb84f71
+    maturity: high
+    owner:
+      name: Martina Gelnerova
+      email: martina.gelnerova@apify.com
+    depends_on:
+      - ref('int_session_events_agg')
+      - ref('int_session_product')
